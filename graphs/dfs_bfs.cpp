@@ -1,3 +1,5 @@
+// depth-first search and breadth-first search
+
 #include <iostream>
 #include <queue>
 #include <stack>
