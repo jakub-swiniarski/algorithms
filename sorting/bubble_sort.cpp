@@ -8,10 +8,15 @@ std::vector<int> bubble_sort(const std::vector<int>& v) {
     std::vector<int> v_new = v;
 
     for (int i = 0; i < v.size() - 1; i++) {
+        bool swapped = false;
         for (int j = 0; j < v.size() - i - 1; j++) {
-            if (v_new[j] > v_new[j + 1])
+            if (v_new[j] > v_new[j + 1]) {
                 std::swap(v_new[j], v_new[j + 1]);
+                swapped = true;
+            }
         }
+        if (!swapped)
+            break;
     }
 
     return v_new;
