@@ -4,14 +4,12 @@
 #include <utility>
 #include <vector>
 
-std::vector<int> bubble_sort(const std::vector<int>& v) {
-    std::vector<int> v_new = v;
-
+std::vector<int> bubble_sort(std::vector<int> v) {
     for (int i = 0; i < v.size() - 1; i++) {
         bool swapped = false;
         for (int j = 0; j < v.size() - i - 1; j++) {
-            if (v_new[j] > v_new[j + 1]) {
-                std::swap(v_new[j], v_new[j + 1]);
+            if (v[j] > v[j + 1]) {
+                std::swap(v[j], v[j + 1]);
                 swapped = true;
             }
         }
@@ -19,7 +17,7 @@ std::vector<int> bubble_sort(const std::vector<int>& v) {
             break;
     }
 
-    return v_new;
+    return v;
 }
 
 int main(void) {
@@ -28,12 +26,9 @@ int main(void) {
     std::cin >> n;
 
     std::cout << "Enter the numbers.\n";
-    std::vector<int> v;
-    for (int i = 0; i < n; i++) {
-        int x;
-        std::cin >> x;
-        v.push_back(x);
-    }
+    std::vector<int> v(n);
+    for (int i = 0; i < n; i++)
+        std::cin >> v[i];
 
     std::cout << "Sorted numbers:\n";
     std::vector<int> v_sorted = bubble_sort(v);
