@@ -33,29 +33,28 @@ public:
 
     int find_farthest(int i_node) { // DFS
         std::vector<bool> visited(nodes.size(), false);
-        std::stack<int> visit_stack;
+        std::stack<std::pair<int, int>> visit_stack;
 
         int farthest_node = i_node;
         int max_depth = 0;
-        int depth = 0;
 
         visited[i_node] = true;
-        visit_stack.push(i_node);
+        visit_stack.push({ i_node, 0 });
 
         while (!visit_stack.empty()) {
-            int i_cur = visit_stack.top();
+            auto [i_cur, depth] = visit_stack.top();
             visit_stack.pop();
 
+            depth++;
             for (int i : nodes[i_cur].adj_nodes) {
                 if (visited[i]) 
                     continue;
-                depth++;
                 if (depth > max_depth) {
                     farthest_node = i;
                     max_depth = depth;
                 }
                 visited[i] = true;
-                visit_stack.push(i);
+                visit_stack.push({ i, depth });
             }
         }
 
