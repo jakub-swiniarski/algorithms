@@ -13,14 +13,14 @@ std::vector<ull> sieve(ull n) {
     is_prime[0] = is_prime[1] = false;
     ull limit = std::sqrt(n);
 
-    for (int i = 2; i <= limit + 1; i++) {
+    for (ull i = 2; i <= limit + 1; i++) {
         if (!is_prime[i])
             continue;
-        for (int j = i * i; j <= n; j += i)
+        for (ull j = i * i; j <= n; j += i)
             is_prime[j] = false;
     }
 
-    for (int i = 0; i <= n; i++) {
+    for (ull i = 0; i <= n; i++) {
         if (is_prime[i])
             primes.push_back(i);
     }
