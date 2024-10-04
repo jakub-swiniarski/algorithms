@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <iostream>
+#include <vector>
 
 using ull = unsigned long long;
 
@@ -10,8 +11,7 @@ int main(void) {
     std::cout << "Enter the limit: ";
     std::cin >> n;
 
-    bool is_prime[n + 1];
-    std::fill(is_prime, is_prime + n + 1, true);
+    std::vector<bool> is_prime(n + 1, true);
     is_prime[0] = is_prime[1] = false;
     ull limit = std::sqrt(n);
     for (int i = 2; i <= limit + 1; i++) {
