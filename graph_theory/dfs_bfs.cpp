@@ -63,11 +63,9 @@ public:
 
     std::vector<int> find_distances(int i_node) { // BFS
         std::vector<int> distances(nodes.size(), -1); 
-        std::vector<bool> visited(nodes.size(), false);
         std::queue<int> visit_queue;
 
         distances[i_node] = 0;
-        visited[i_node] = true;
         visit_queue.push(i_node);
 
         while (!visit_queue.empty()) {
@@ -75,10 +73,9 @@ public:
             visit_queue.pop();
 
             for (int i : nodes[i_cur].adj_nodes) {
-                if (visited[i])
+                if (distances[i] != -1)
                     continue;
                 distances[i] = distances[i_cur] + 1;
-                visited[i] = true;
                 visit_queue.push(i);
             }
         }
